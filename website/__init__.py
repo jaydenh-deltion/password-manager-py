@@ -2,9 +2,12 @@ from flask import Flask
 
 def create_app():
     app = Flask(__name__)
+    app.config['SECRET_KEY'] = 'your_secret_key_here' # aanpassen naar een echte geheime sleutel
 
-    @app.route('/')
-    def home():
-        return "Hello, Flask!"
+    from .views import views
+    from .auth import auth
+
+    app.register_blueprint(views, url_prefix='/') # main routes
+    app.register_blueprint(auth, url_prefix='/') # auth routes
 
     return app

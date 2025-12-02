@@ -1,4 +1,6 @@
+{% block content %}
 <form method="POST">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
     <br />
   <h3 align="center">Login</h3>
   <div class="form-group">
@@ -21,5 +23,6 @@
       placeholder="Enter password"
     />
   <br />
-  <button type="submit" class="btn btn-primary">Login</button>
+  <button type="submit">Login</button>
 </form>
+{% endblock %}
