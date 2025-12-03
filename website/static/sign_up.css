@@ -1,0 +1,66 @@
+/* Globale Stijlen en Achtergrond */
+body {
+    margin: 0;
+    padding: 0;
+    /* Donkergrijze achtergrond zoals in de afbeelding */
+    background: #878787; 
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center; /* Horizontaal centreren */
+    align-items: center;     /* Verticaal centreren */
+    min-height: 100vh;       /* Zorgt dat de body de volledige viewport vult */
+}
+
+/* De Registratie Box (Overlay) */
+.register-box {
+    /* Lichte achtergrond van het formulier */
+    background: #e6e6e6; 
+    padding: 30px;
+    width: 300px; /* Vaste breedte voor de box */
+    border: 1px solid #888;
+    border-radius: 6px;
+    /* Een lichte schaduw om de box te laten 'zweven' */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+}
+
+/* Labels */
+label {
+    display: block;
+    margin-bottom: 5px;
+    margin-top: 15px;
+    font-weight: bold;
+    color: #333;
+    text-align: left; /* Zorgt dat de tekst links uitlijnt in de box */
+    font-size: 14px;
+}
+
+/* Input Velden */
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #999;
+    border-radius: 4px;
+    background: white;
+    box-sizing: border-box; /* Zorgt dat padding binnen de breedte valt */
+}
+
+/* Registreren Knop */
+.register-btn {
+    width: 100%; /* Knop over de volledige breedte */
+    background: #000; /* Zwarte achtergrond */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin-top: 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+/* Hover Effect voor de Knop */
+.register-btn:hover {
+    background: #333;
+}
