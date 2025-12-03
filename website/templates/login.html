@@ -1,105 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="../static/login.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
 </head>
 <body>
-  <style>
-
-/* Achtergrond */
-body {
-    margin: 0;
-    padding: 0;
-    background: #878787;
-    font-family: Arial, sans-serif;
-    text-align: center;
-}
-
-/* Centraal overlay */
-.overlay {
-    height: 100vh;
-    width: 100%;        /* >> was 10% */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Login box */
-.login-box {
-    background: #e6e6e6;
-    padding: 20px 25px;
-    width: 280px;       /* vaste, mooie breedte */
-    border: 1px solid #888;
-    border-radius: 6px;
-    box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
-}
-
-/* Labels */
-label {
-    font-size: 14px;
-    display: block;
-    margin-bottom: 4px;
-}
-
-/* Input velden */
-input[type="email"],
-input[type="password"] {
-    width: 15%;        /* >> was 15% */
-    padding: 8px;
-    margin-bottom: 16px;
-    margin-left: 1%;
-    margin-top: 4px;
-    border: 1px solid #999;
-    border-radius: 3px;
-    background: white;
-    box-sizing: border-box;
-    text-align: center;
-}
-
-/* Checkbox en tekst */
-.remember {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.remember label {
-    margin-left: 6px;
-    font-size: 13px;
-    color: white;
-}
-
-/* Knoppen */
-.buttons {
-    width: 25%;
-    display: flex;
-    justify-content: space-between;
-}
-
-.register-btn,
-.login-btn {
-    background: #000;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    cursor: pointer;
-    text-decoration: none;
-    font-size: 14px;
-}
-
-/* Hover effect */
-.register-btn:hover,
-.login-btn:hover {
-    opacity: 0.8;
-}
-
-  </style>
 </body>
 <form method="POST">
-  <link rel="stylesheet" href="url_for('static', filename='css/login.css') ">
 <br />
 <h3 align="center">Login</h3>
 <div class="form-group">
@@ -109,7 +18,7 @@ input[type="password"] {
     class="form-control"
     id="email"
     name="email"
-    placeholder="Enter email"
+    placeholder="Enter email" required
   />
 </div>
 <div class="form-group">
@@ -119,11 +28,14 @@ input[type="password"] {
     class="form-control"
     id="password1"
     name="password"
-    placeholder="Enter password"
+    placeholder="Enter password" required 
   />
 <br />
-<button type="submit">Login</button>
-</form>
+
+<a href="sign_up.html" class="register-btn">Sign Up</a>
+<button type="button" href="dashboard.html" class="login-btn">Login</button>
 <br />
-<a href="/sign-up">Don't have an account? Sign Up</a>
+<input type="checkbox" id="remember" name="remember"><label for="remember"> Remember me</label>
+
+</form>
 </html>
