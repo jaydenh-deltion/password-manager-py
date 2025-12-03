@@ -2,7 +2,6 @@
 body {
     margin: 0;
     padding: 0;
-    /* Donkergrijze achtergrond zoals in de afbeelding */
     background: #878787; 
     font-family: Arial, sans-serif;
     display: flex;

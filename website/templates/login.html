@@ -14,7 +14,7 @@
 <form method="POST">
 <br />
 <h3 align="center">Login</h3>
-<div class="form-group">
+<div class="form-group" class="register-box" >
   <label for="email">Email Address</label>
   <input
     type="email"
@@ -36,7 +36,8 @@
 <br />
 
 <a href="{{ url_for('auth.signup') }}" class="register-btn">Sign Up</a>
-<button type="button" href="dashboard.html" class="login-btn">Login</button>
+<a href="{{ url_for('auth.dashboard') }}" class="login-btn">Login</a>
+<br />
 <br />
 <input type="checkbox" id="remember" name="remember"><label for="remember"> Remember me</label>
 
