@@ -1,6 +1,64 @@
+{% block content %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <link rel="stylesheet" href="../static/dashboard.css">
-  <h1>home</h1>
-  <style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('../static/dashboard.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="top-bar">
+        <div class="left"></div>
+
+        <div class="right">
+            <a href="#" class="add-password">add password</a>
+            <button class="manager-btn">Manager</button>
+            <button class="profile-btn">⭘</button>
+        </div>
+    </header>
+
+    <!-- Search bar -->
+    <div class="search-container">
+        <input type="text" placeholder="Search...." class="search-box">
+    </div>
+
+   
+    <div class="content-box">
+
+        <button class="arrow left-arrow">←</button>
+
+        <div class="lists-container">
+            <div class="column">
+                {% for i in range(12) %}
+                <div class="item">
+                    <span>website</span>
+                    <button class="go-btn">➔</button>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="column">
+                {% for i in range(12) %}
+                <div class="item">
+                    <span>website</span>
+                    <button class="go-btn">➔</button>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <button class="arrow right-arrow">→</button>
+
+    </div>
+
+    <div class="delete-container">
+        <button class="delete-all">DELETE ALL!</button>
+    </div>
+
+</body>
+</html>
+{% endblock %}

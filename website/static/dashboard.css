@@ -1,7 +1,149 @@
-body{ 
+/* Global layout */
+body {
     margin: 0;
     padding: 0;
-    background: #878787;  
+    background: #bcbcbc;
     font-family: Arial, sans-serif;
+}
 
+/* Header */
+.top-bar {
+    height: 60px;
+    background: #d6d6d6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 25px;
+}
+
+.add-password {
+    text-decoration: none;
+    color: black;
+    margin-right: 20px;
+}
+
+.manager-btn {
+    background: black;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.profile-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: white;
+    cursor: pointer;
+}
+
+/* Search bar */
+.search-container {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.search-box {
+    width: 700px;
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid #999;
+    font-size: 18px;
+}
+
+/* Central content box */
+.content-box {
+    margin-top: 40px;
+    background: #dedede;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 40px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+}
+
+/* Arrow buttons */
+.arrow {
+    background: black;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+    height: 40px;
+}
+
+.left-arrow {
+    position: absolute;
+    left: -50px;
+    top: 50%;
+}
+
+.right-arrow {
+    position: absolute;
+    right: -50px;
+    top: 50%;
+}
+
+/* Lists */
+.lists-container {
+    display: flex;
+    width: 90%;
+    justify-content: space-evenly;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Website item block */
+.item {
+    width: 200px;
+    background: #2e2e2e;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.go-btn {
+    background: white;
+    color: black;
+    border: none;
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+}
+
+/* Delete button */
+.delete-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.delete-all {
+    margin-top: 25px;
+    background: red;
+    border: none;
+    color: white;
+    padding: 12px 40px;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
 }
