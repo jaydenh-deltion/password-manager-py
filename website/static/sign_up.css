@@ -12,7 +12,7 @@ body {
 
 /* De Registratie Box (Overlay) */
 .register-box {
-    /* Lichte achtergrond van het formulier */
+    align-items: center;
     background: #e6e6e6; 
     padding: 30px;
     width: 300px; /* Vaste breedte voor de box */
@@ -37,12 +37,13 @@ label {
 input[type="email"],
 input[type="password"] {
     width: 100%;
-    padding: 10px;
+    padding: 8px;
     margin-bottom: 15px;
     border: 1px solid #999;
     border-radius: 4px;
     background: white;
     box-sizing: border-box; /* Zorgt dat padding binnen de breedte valt */
+    text-align: left;
 }
 
 /* Registreren Knop */

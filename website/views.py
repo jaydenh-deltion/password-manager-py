@@ -1,12 +1,8 @@
 # waar de gebruiken heen kan gaan
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, redirect, url_for
 
 views = Blueprint('views', __name__)
 
 @views.route('/')
 def login():
     return render_template('login.html')
-
-@views.route('/dashboard')
-def dashboard():
-    return render_template('dashboard.html')

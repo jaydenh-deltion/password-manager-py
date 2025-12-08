@@ -20,6 +20,11 @@
   
   /* Login box */
   .login-box {
+      align-items: center;
+      margin-top: 15%;
+      margin-bottom: 30%;
+      margin-left: 41%;
+      margin-right: 30%;
       background: #e6e6e6;
       padding: 20px 25px;
       width: 280px;       /* vaste, mooie breedte */
@@ -38,7 +43,7 @@
   /* Input velden */
   input[type="email"],
   input[type="password"] {
-      width: 15%;        /* >> was 15% */
+      width: 90%;        /* >> was 15% */
       padding: 8px;
       margin-bottom: 16px;
       margin-left: 1%;
@@ -47,7 +52,7 @@
       border-radius: 3px;
       background: white;
       box-sizing: border-box;
-      text-align: center;
+      text-align: left;
   }
   
   /* Checkbox en tekst */

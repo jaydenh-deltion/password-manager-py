@@ -13,10 +13,12 @@
 </body>
 <form method="POST">
 <br />
-<h3 align="center">Login</h3>
-<div class="form-group" class="register-box" >
-  <label for="email">Email Address</label>
-  <input
+
+
+<div class="login-box">
+  <div class="form-group" class="register-box" >
+   <label for="email">Email Address</label>
+   <input
     type="email"
     class="form-control"
     id="email"
@@ -33,13 +35,14 @@
     name="password"
     placeholder="Enter password" required 
   />
+</div>
 <br />
 
 <a href="{{ url_for('auth.signup') }}" class="register-btn">Sign Up</a>
-<a href="{{ url_for('auth.dashboard') }}" class="login-btn">Login</a>
+<h4> don't have a account? to make one press Sing Up</h4>
+
 <br />
 <br />
-<input type="checkbox" id="remember" name="remember"><label for="remember"> Remember me</label>
 
 </form>
 </html>
