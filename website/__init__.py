@@ -2,7 +2,7 @@ from flask import Flask
 
 def create_app():
     app = Flask(__name__)
-    app.config['SECTET_KEY'] = 'supersecretkey'
+    app.config['SECRET_KEY'] = 'supersecretkey' 
 
 
     from .views import views

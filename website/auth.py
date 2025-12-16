@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template,request
+from flask import Blueprint, render_template,request, flash
 from flask_login import login_required, current_user, logout_user, login_user, UserMixin, LoginManager
 
 
@@ -20,12 +20,12 @@ def signup():
         password2 = request.form.get('password2')
 
         if len(email) < 4: 
-            pass
+            flash('Email must be greater than 4 characters.', category='error')
         elif password1 != password2:
-            pass
+            flash('Passwords don\'t match.', category='error')
         elif len(password1) < 6:
-            pass
+            flash ('Password must be at least 6 characters .', category='error')
         else:
-            pass
+            flash('Account created!', category='success')
 
     return render_template('sign_up.html')
