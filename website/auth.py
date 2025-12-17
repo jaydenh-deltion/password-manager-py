@@ -1,5 +1,8 @@
-from flask import Blueprint, render_template,request, flash
+from flask import Blueprint, render_template,request, flash, redirect, url_for
 from flask_login import login_required, current_user, logout_user, login_user, UserMixin, LoginManager
+from .models import User
+from werkzeug.security import generate_password_hash, check_password_hash
+from . import db
 
 
 auth = Blueprint('auth', __name__)
@@ -16,8 +19,12 @@ def logout():
 def signup():
     if request.method == 'POST':
         email = request.form.get('email') # get email from form
-        password1 = request.form.get('password')
+        password1 = request.form.get('password1')
         password2 = request.form.get('password2')
+
+        #user = User.query.filter_by(email=email).first()
+        #if user:
+            #flash('Email already exists.', category='error')
 
         if len(email) < 4: 
             flash('Email must be greater than 4 characters.', category='error')
@@ -26,6 +33,10 @@ def signup():
         elif len(password1) < 6:
             flash ('Password must be at least 6 characters .', category='error')
         else:
+            new_user = User(email=email, password=generate_password_hash(password1, method='pbkdf2:sha256'))
+            db.session.add(new_user)
+            db.session.commit()
             flash('Account created!', category='success')
+            return redirect(url_for('views.home'))
 
     return render_template('sign_up.html')
