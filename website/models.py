@@ -8,6 +8,7 @@ class Password(db.Model):
     website = db.Column(db.String(150)) # website field
     username = db.Column(db.String(150)) # username field
     password = db.Column(db.String(250)) # password field
+    category = db.Column(db.String(100)) # category field
     user_id = db.Column(db.Integer, db.ForeignKey('user.id')) # foreign key to link to User
     date_created = db.Column(db.DateTime(timezone=True), default=func.now()) # timestamp of creation
 

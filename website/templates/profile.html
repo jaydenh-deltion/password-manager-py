@@ -1,0 +1,27 @@
+{% block content %}
+
+<link rel="stylesheet" href="../static/profile.css">
+
+    <header class="top-bar">
+        <div class="left"></div>
+
+        <div class="right">
+            <a href="add-password.html" class="add-password">add password</a>
+            <button class="manager-btn">Manager</button>
+            <button class="profile-btn">⭘</button>
+            <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
+        </div>
+    </header>
+
+    <div class="profile-container">
+        <h2>User Profile</h2>
+        <div class="profile-info">
+            <p><strong>Email:</strong> {{ user.email }}</p>
+        </div>
+        <div class="profile-actions">
+            <button class="edit-profile-btn">Edit Profile</button>
+            <button class="change-password-btn">Change Password</button>
+        </div>
+    </div>
+
+{% endblock %}
