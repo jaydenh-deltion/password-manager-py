@@ -2,6 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from os import path
 from flask_login import LoginManager
+from datetime import timedelta
 
 
 db = SQLAlchemy()
@@ -11,6 +12,10 @@ def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'supersecretkey'  # secret key for sessions and security
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'  # database location
+
+    app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=10)  # session lifetime
+
+
     db.init_app(app)  # initialize database with app
 
 

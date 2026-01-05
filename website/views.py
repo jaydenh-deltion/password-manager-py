@@ -10,6 +10,11 @@ views = Blueprint('views', __name__)
 @views.route('/', methods=['GET', 'POST']) 
 @login_required
 def home():
+    print(f"=== LOGGED IN USER ===")
+    print(f"User ID: {current_user.id}")
+    print(f"User Email: {current_user.email}")
+    print(f"User authenticated: {current_user.is_authenticated}")
+    print(f"======================")
     return render_template('dashboard.html', user=current_user)
 
 
