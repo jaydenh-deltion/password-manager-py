@@ -29,5 +29,5 @@ def add_password():
     new_password = Password(website=website, username=username, password=password, user_id=current_user.id)
     db.session.add(new_password)
     db.session.commit()
-    flash('Password added successfully!', category='success')
+    flash('Password added successfully!', category='success')  
     return redirect(url_for('views.home'))

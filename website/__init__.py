@@ -4,21 +4,27 @@ from os import path
 from flask_login import LoginManager
 from datetime import timedelta
 
-
 db = SQLAlchemy()
 DB_NAME = "database.db"
 
 def create_app():
     app = Flask(__name__)
-    app.config['SECRET_KEY'] = 'supersecretkey'  # secret key for sessions and security
-    app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'  # database location
-
-    app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=10)  # session lifetime
-
-
-    db.init_app(app)  # initialize database with app
-
-
+    app.config['SECRET_KEY'] = 'supersecretkey'
+    app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
+    
+    # Voeg SQLALCHEMY_ENGINE_OPTIONS toe
+    app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
+        'connect_args': {
+            'timeout': 5,
+            'check_same_thread': False
+        },
+        'pool_pre_ping': True
+    }
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=10)
+    
+    db.init_app(app)
+    
     from .views import views
     from .auth import auth
     
@@ -26,14 +32,13 @@ def create_app():
     app.register_blueprint(auth, url_prefix='/')
     
     from .models import User, Password
-
-
+    
     create_database(app)
-
+    
     login_manager = LoginManager()
-    login_manager.login_view = 'auth.login'  # redirect to login page if not logged in
+    login_manager.login_view = 'auth.login'
     login_manager.init_app(app)
-
+    
     @login_manager.user_loader
     def load_user(id):
         return User.query.get(int(id))

@@ -16,7 +16,7 @@ def login():
         if user:
             if check_password_hash(user.password, password):
                 flash('Logged in successfully!', category='success')
-                session.permanent = True  # Gebruik PERMANENT_SESSION_LIFETIME (1 minuut in __init__.py)
+                session.permanent = True
                 login_user(user, remember=False)
                 return redirect(url_for('views.home'))
             else:
@@ -25,6 +25,7 @@ def login():
             flash('Email does not exist.', category='error')
     
     return render_template("login.html", user=current_user)
+
 
 @auth.route('/logout')
 @login_required
@@ -49,12 +50,17 @@ def signup():
         elif len(password1) < 6:
             flash('Password must be at least 6 characters.', category='error')
         else:
-            new_user = User(email=email, password=generate_password_hash(password1, method='pbkdf2:sha256'))
-            db.session.add(new_user)
-            db.session.commit()
-            session.permanent = True  # Gebruik PERMANENT_SESSION_LIFETIME (1 minuut in __init__.py)
-            login_user(new_user, remember=False)
-            flash('Account created!', category='success')
-            return redirect(url_for('views.home'))
+            try:
+                new_user = User(email=email, password=generate_password_hash(password1, method='pbkdf2:sha256'))
+                db.session.add(new_user)
+                db.session.commit()
+                session.permanent = True
+                login_user(new_user, remember=False)
+                flash('Account created!', category='success')
+                return redirect(url_for('views.home'))
+            except Exception as e:
+                db.session.rollback()
+                print(f"Signup error: {e}")
+                flash('Error creating account. Please try again.', category='error')
     
     return render_template('sign_up.html', user=current_user)
