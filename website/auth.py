@@ -48,7 +48,7 @@ def signup():
         elif password1 != password2:
             flash('Passwords don\'t match.', category='error')
         elif len(password1) < 6:
-            flash('Password must be at least 6 characters.', category='error')
+            flash('Password must be at least 6 characters.', category='error') 
         else:
             try:
                 new_user = User(email=email, password=generate_password_hash(password1, method='pbkdf2:sha256'))

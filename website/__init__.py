@@ -11,15 +11,6 @@ def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'supersecretkey'
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
-    
-    # Voeg SQLALCHEMY_ENGINE_OPTIONS toe
-    app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
-        'connect_args': {
-            'timeout': 5,
-            'check_same_thread': False
-        },
-        'pool_pre_ping': True
-    }
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=10)
     
@@ -32,8 +23,11 @@ def create_app():
     app.register_blueprint(auth, url_prefix='/')
     
     from .models import User, Password
+
+    with app.app_context():
+        db.create_all()
     
-    create_database(app)
+    #create_database(app)
     
     login_manager = LoginManager()
     login_manager.login_view = 'auth.login'
@@ -45,8 +39,8 @@ def create_app():
     
     return app
 
-def create_database(app):
-    if not path.exists('website/' + DB_NAME):
-        with app.app_context():
-            db.create_all()
-            print('Created Database!')
+#def create_database(app):
+    #if not path.exists('website/' + DB_NAME):
+        #with app.app_context():
+           # db.create_all()
+            #print('Created Database!')

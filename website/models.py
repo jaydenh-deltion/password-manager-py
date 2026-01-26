@@ -19,3 +19,4 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(200)) # password field
     date_created = db.Column(db.DateTime(timezone=True), default=func.now()) # timestamp of creation
     passwords = db.relationship('Password') # relationship to Password model
+    

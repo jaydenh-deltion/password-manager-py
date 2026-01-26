@@ -24,7 +24,7 @@ def add_password():
     website = request.form.get('website')
     username = request.form.get('username')
     password = request.form.get('password')
-    catecory = request.form.get('category')
+    category = request.form.get('category')
 
     new_password = Password(website=website, username=username, password=password, user_id=current_user.id)
     db.session.add(new_password)
