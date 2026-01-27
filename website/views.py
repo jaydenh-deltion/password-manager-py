@@ -9,7 +9,7 @@ views = Blueprint('views', __name__)
 
 @views.route('/', methods=['GET', 'POST']) 
 @login_required
-def home():
+def dashboard():
     print(f"=== LOGGED IN USER ===")
     print(f"User ID: {current_user.id}")
     print(f"User Email: {current_user.email}")
@@ -17,17 +17,24 @@ def home():
     print(f"======================")
     return render_template('dashboard.html', user=current_user)
 
-
-@views.route('/add_password', methods=['POST'])
+@views.route('/add-password', methods=['GET', 'POST'])
 @login_required
 def add_password():
-    website = request.form.get('website')
-    username = request.form.get('username')
-    password = request.form.get('password')
-    category = request.form.get('category')
+    if request.methods == 'POST':
+        website = request.form.get('website')
+        username = request.form.get('username')
+        password = request.form.get('password')
+        notes = request.form.get('notes')
+        category = request.form.get('category')
 
-    new_password = Password(website=website, username=username, password=password, user_id=current_user.id)
-    db.session.add(new_password)
-    db.session.commit()
-    flash('Password added successfully!', category='success')  
-    return redirect(url_for('views.home'))
+        if not website or len (website) < 1:
+            flash('Website field is required!', category='error')
+
+        elif not username or len(username) < 1:
+            flash('Username field is required!', category='error')
+
+        elif not password or len(password) < 1:
+            flash('Password field is required!', category='error')
+        #else:
+            #try:
+                #master_key = f"{current_user.email}_{current_user.id}"
