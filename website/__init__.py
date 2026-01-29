@@ -27,7 +27,6 @@ def create_app():
     with app.app_context():
         db.create_all()
     
-    #create_database(app)
     
     login_manager = LoginManager()
     login_manager.login_view = 'auth.login'
@@ -39,8 +38,8 @@ def create_app():
     
     return app
 
-def create_database(app):
-    if not path.exists('website/' + DB_NAME):
-        with app.app_context():
-            db.create_all()
-            print('Created Database!')
+#def create_database(app):
+    #if not path.exists('website/' + DB_NAME):
+        #with app.app_context():
+            #db.create_all()
+            #print('Created Database!')
